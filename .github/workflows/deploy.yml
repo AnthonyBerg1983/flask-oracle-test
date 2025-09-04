@@ -24,8 +24,8 @@ jobs:
       # Step 3: Build & push Docker image
       - name: Build and push Docker image
         run: |
-          IMAGE_ID=ghcr.io/${GITHUB_ACTOR,,}/flask-oracle-test:latest
-          echo "Building and pushing $IMAGE_ID"
+          IMAGE_ID=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/flask-oracle-test:latest
+          echo "Using image: $IMAGE_ID"
           docker build . -t $IMAGE_ID
           docker push $IMAGE_ID
 
