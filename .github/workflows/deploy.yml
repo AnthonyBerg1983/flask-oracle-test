@@ -37,7 +37,9 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            docker pull ghcr.io/${{ github.actor }}/flask-oracle-test:latest
+            IMAGE_ID=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/flask-oracle-test:latest
+            echo "Deploying $IMAGE_ID"
+            docker pull $IMAGE_ID
             docker stop flask-app || true
             docker rm flask-app || true
-            docker run -d -p 8080:5000 --name flask-app ghcr.io/${{ github.actor }}/flask-oracle-test:latest
+            docker run -d -p 80:5000 --name flask-app $IMAGE_ID
