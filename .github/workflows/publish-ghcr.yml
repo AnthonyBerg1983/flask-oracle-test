@@ -14,6 +14,6 @@ jobs:
 
       - name: Build and push the image
         run: |
-          echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u anthonyberg1983 --password-stdin
+          echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u anthonyberg1983 --password-stdin
           docker build . --tag ghcr.io/anthonyberg1983/flask-oracle-test:latest
           docker push ghcr.io/anthonyberg1983/flask-oracle-test:latest
