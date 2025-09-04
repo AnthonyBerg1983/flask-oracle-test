@@ -24,8 +24,10 @@ jobs:
       # Step 3: Build & push Docker image
       - name: Build and push Docker image
         run: |
-          docker build . -t ghcr.io/${{ github.actor }}/flask-oracle-test:latest
-          docker push ghcr.io/${{ github.actor }}/flask-oracle-test:latest
+          IMAGE_ID=ghcr.io/${GITHUB_ACTOR,,}/flask-oracle-test:latest
+          echo "Building and pushing $IMAGE_ID"
+          docker build . -t $IMAGE_ID
+          docker push $IMAGE_ID
 
       # Step 4: Deploy to Oracle VM via SSH
       - name: SSH to Oracle VM and deploy
