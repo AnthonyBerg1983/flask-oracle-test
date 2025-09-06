@@ -12,10 +12,6 @@ db = client.get_database()
 
 @app.route("/")
 def home():
-    return "Hello, Tony!"
-
-@app.route("/")
-def home():
     return jsonify({"message": "Flask + MongoDB is working!"})
 
 @app.route("/add", methods=["POST"])
